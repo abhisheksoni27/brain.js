@@ -6,6 +6,7 @@ import randos from './utilities/randos';
 import range from './utilities/range';
 import toArray from './utilities/to-array';
 import zeros from './utilities/zeros';
+import GPU from 'gpu.js'
 
 /**
  *
@@ -35,6 +36,7 @@ export default class NeuralNetwork {
    * @param {Boolean} keepNetworkIntact
    */
   initialize(sizes, keepNetworkIntact) {
+    if(!sizes) throw new Error('Size (Array) of the neural network must be defined.');
     this.sizes = sizes;
     this.outputLayer = this.sizes.length - 1;
 
@@ -85,6 +87,7 @@ export default class NeuralNetwork {
       input = lookup.toArray(this.inputLookup, input);
     }
 
+    this.makeLayers();
     let output = this.runInput(input);
 
     if (this.outputLookup) {
@@ -98,20 +101,51 @@ export default class NeuralNetwork {
    * @param input
    * @returns {*}
    */
-  runInput(input) {
+  // runInput(input) {
+  //   this.outputs[0] = input;  // set output state of input layer
+
+  //   let output = null;
+  //   for (let layer = 1; layer <= this.outputLayer; layer++) {
+  //     for (let node = 0; node < this.sizes[layer]; node++) {
+  //       let weights = this.weights[layer][node];
+
+  //       let sum = this.biases[layer][node];
+  //       for (let k = 0; k < weights.length; k++) {
+  //         sum += weights[k] * input[k];
+  //       }
+  //       this.outputs[layer][node] = 1 / (1 + Math.exp(-sum));
+  //     }
+  //     output = input = this.outputs[layer];
+  //   }
+  //   return output;
+  // }
+
+  makeLayers() {
+    const layers = this.layers;
+    const kernels = this.kernels;
+    for (let i = 0; i < layers.length; i++) {
+      const layer = layers[i];
+      const kernel = gpu.createKernel(`function(input, weights, biases) {
+        var sum = biases[this.thread.x];
+        for (var i = 0; i < ${ weights.length }; i++) {
+          sum += weights[i] * input[i];
+        }
+        return 1 / (1 + Math.exp(-sum));
+      }`, {
+        dimensions: [layer.length - 1]
+      });
+      kernel.build(new Array(this.size[i]), layer.weights, layer.biases);
+      kernels.push(kernel);
+      console.log(kernels);
+    }
+  }
+
+    runInput(input) {
     this.outputs[0] = input;  // set output state of input layer
 
     let output = null;
     for (let layer = 1; layer <= this.outputLayer; layer++) {
-      for (let node = 0; node < this.sizes[layer]; node++) {
-        let weights = this.weights[layer][node];
-
-        let sum = this.biases[layer][node];
-        for (let k = 0; k < weights.length; k++) {
-          sum += weights[k] * input[k];
-        }
-        this.outputs[layer][node] = 1 / (1 + Math.exp(-sum));
-      }
+      this.outputs[layer] = this.kernels[layer](input, this.weights[layer], this.biases[layer]);
       output = input = this.outputs[layer];
     }
     return output;
@@ -198,6 +232,7 @@ export default class NeuralNetwork {
    *
    * @param target
    */
+  // 2 4 1
   calculateDeltas(target) {
     for (let layer = this.outputLayer; layer >= 0; layer--) {
       for (let node = 0; node < this.sizes[layer]; node++) {
