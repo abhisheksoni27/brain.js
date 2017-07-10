@@ -6,6 +6,7 @@ var TrainStream = require('./dist/train-stream').default;
 var RNN = require('./dist/recurrent/rnn').default;
 var LSTM = require('./dist/recurrent/lstm').default;
 var GRU = require('./dist/recurrent/gru').default;
+var NeuralNetworkGPU = require('./dist/neural-network-gpu').default;
 var utilities = {
   max: require('./dist/utilities/max').default,
   mse: require('./dist/utilities/mse').default,
@@ -19,11 +20,13 @@ var utilities = {
   zeros: require('./dist/utilities/zeros').default
 };
 
+
 var brain = {
   crossValidate: crossValidate,
   likely: likely,
   lookup: lookup,
   NeuralNetwork: NeuralNetwork,
+  NeuralNetworkGPU: NeuralNetworkGPU,
   TrainStream: TrainStream,
   recurrent: {
     RNN: RNN,

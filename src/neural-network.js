@@ -16,7 +16,7 @@ export default class NeuralNetwork {
   constructor(options = {}) {
     Object.assign(this, NeuralNetwork.defaults, options);
     this.hiddenSizes = options.hiddenLayers;
-
+   
     this.sizes = null;
     this.outputLayer = null;
     this.biases = null; // weights for bias nodes
@@ -100,7 +100,6 @@ export default class NeuralNetwork {
    */
   runInput(input) {
     this.outputs[0] = input;  // set output state of input layer
-
     let output = null;
     for (let layer = 1; layer <= this.outputLayer; layer++) {
       for (let node = 0; node < this.sizes[layer]; node++) {
@@ -152,9 +151,9 @@ export default class NeuralNetwork {
 
     let error = 1;
     let i;
-    for (i = 0; i < iterations && error > errorThresh; i++) {
+    for (i = 0; i < 2 && error > errorThresh; i++) {
       let sum = 0;
-      for (let j = 0; j < data.length; j++) {
+      for (let j = 0; j < 1; j++) {
         let err = this.trainPattern(data[j].input, data[j].output, learningRate);
         sum += err;
       }
@@ -202,7 +201,6 @@ export default class NeuralNetwork {
     for (let layer = this.outputLayer; layer >= 0; layer--) {
       for (let node = 0; node < this.sizes[layer]; node++) {
         let output = this.outputs[layer][node];
-
         let error = 0;
         if (layer == this.outputLayer) {
           error = target[node] - output;
@@ -235,7 +233,7 @@ export default class NeuralNetwork {
 
           change = (learningRate * delta * incoming[k])
             + (this.momentum * change);
-
+          
           this.changes[layer][node][k] = change;
           this.weights[layer][node][k] += change;
         }
