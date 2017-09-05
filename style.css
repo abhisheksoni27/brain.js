@@ -6,31 +6,32 @@ body {
     font-family: 'Raleway';
 }
 
-body {
-    background: #F3DF49;
+#home {
     display: flex;
+     height: 90vh; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: #F3DF49;
 }
 
 #logo {
     flex: 2;
     width: 20%;
-    padding: 2rem;
+    padding: 1rem;
     align-self: flex-end;
 }
 
 header {
     display: flex;
     flex-direction: column;
-    flex: 8;
+    flex: 5;
     align-self: center;
     text-align: center;
 }
 
 h1 {
-    flex: 2;
+    flex: 5;
     align-self: center;
     font-weight: 500;
 }
@@ -49,17 +50,29 @@ li {
     /* color: white; */
     display: inline-block;
     padding: 0.5rem 1rem;
-    font-weight: 400;
     cursor: pointer;
     font-size: 1.2rem;
     transition: 'background' 200ms ease-in;
 }
 
-li:hover{
-    background: #F6E87F;  
-    border-bottom:none;    
+li:hover {
+    background: #F6E87F;
+    border-bottom: none;
 }
 
 nav {
     flex: 8;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+
+/*Who are we  */
+
+#who-are-we {
+    min-height: 80vh;
+    background: #00bcd4;
 }
