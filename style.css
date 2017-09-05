@@ -2,30 +2,64 @@ html,
 body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    min-height: 100vh;
     font-family: 'Raleway';
 }
 
 body {
     background: #F3DF49;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 #logo {
     flex: 2;
-    width: 30%;
+    width: 20%;
     padding: 2rem;
     align-self: flex-end;
 }
 
-h1 {
+header {
+    display: flex;
+    flex-direction: column;
     flex: 8;
     align-self: center;
     text-align: center;
+}
+
+h1 {
+    flex: 2;
+    align-self: center;
     font-weight: 500;
 }
 
-h1 > span{
+h1>span {
     font-weight: 100;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    font-family: monospace;
+    background: #F3DF49;
+    /* color: white; */
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 'background' 200ms ease-in;
+}
+
+li:hover{
+    background: #F6E87F;  
+    border-bottom:none;    
+}
+
+nav {
+    flex: 8;
 }
