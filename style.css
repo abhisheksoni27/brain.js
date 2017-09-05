@@ -1,0 +1,31 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Raleway';
+}
+
+body {
+    background: #F3DF49;
+    display: flex;
+    justify-content: center;
+}
+
+#logo {
+    flex: 2;
+    width: 30%;
+    padding: 2rem;
+    align-self: flex-end;
+}
+
+h1 {
+    flex: 8;
+    align-self: center;
+    text-align: center;
+    font-weight: 500;
+}
+
+h1 > span{
+    font-weight: 100;
+}
