@@ -120,7 +120,7 @@ nav ul li a {
 }
 
 .author-container p:first-child {
-    
+    font-weight: 700;
 }
 
 .author-container img {
