@@ -8,7 +8,7 @@ body {
 
 #home {
     display: flex;
-     height: 90vh; 
+    height: 90vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -74,5 +74,57 @@ nav ul li a {
 
 #who-are-we {
     min-height: 80vh;
-    background: #00bcd4;
+    /* background: #00bcd4; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center
 }
+
+.section-headline {
+    font-family: monospace;
+    /* font-weight: 300; */
+    font-size: 2.5rem;
+    flex: 1;
+    font-style: bold;
+    margin-bottom: 0px;
+}
+
+.section-container {
+    display: flex;
+    font-family: monospace;
+    flex: 10;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    max-width: 75vw;
+    padding-top: 0rem;
+    flex-direction: column;
+}
+
+.section-description {
+    flex: 2;
+    font-style: italic;
+}
+
+.authors {
+    flex: 8;
+    display: flex;
+}
+
+.author-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    align-items: center;
+}
+
+.author-container p:first-child {
+    
+}
+
+.author-container img {
+    width: 15vw;
+}
+
+.author-container p:last-child {}
