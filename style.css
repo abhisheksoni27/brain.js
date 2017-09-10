@@ -67,10 +67,29 @@ nav {
 nav ul li a {
     text-decoration: none;
     color: black;
+    transition: background 10ms linear
 }
 
 
-/*Who are we  */
+/* Custom Underline*/
+
+a,
+.section-headline {
+    padding-bottom: 3rem;
+    background-size: 4rem;
+}
+
+a:hover,
+.section-headline:hover {
+    text-decoration: none;
+    background: url(neuron.svg) repeat-x 100% 100%;
+    padding-bottom: 3rem;
+    background-size: 4rem;
+    white-space: nowrap;
+}
+
+
+/* Who are we  */
 
 #who-are-we {
     min-height: 80vh;
