@@ -67,25 +67,6 @@ nav {
 nav ul li a {
     text-decoration: none;
     color: black;
-    transition: background 10ms linear
-}
-
-
-/* Custom Underline*/
-
-a,
-.section-headline {
-    padding-bottom: 3rem;
-    background-size: 4rem;
-}
-
-a:hover,
-.section-headline:hover {
-    text-decoration: none;
-    background: url(neuron.svg) repeat-x 100% 100%;
-    padding-bottom: 3rem;
-    background-size: 4rem;
-    white-space: nowrap;
 }
 
 
@@ -147,3 +128,34 @@ a:hover,
 }
 
 .author-container p:last-child {}
+
+
+/* Reach Us  */
+
+#reach-us {
+    min-height: 60vh;
+    background: #E1F5FE;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center
+}
+
+.form-container{
+    flex:9;
+    display: flex;
+
+}
+
+
+/* Copyright  */
+
+#copyright {
+    min-height:6vh;
+    background: #FC4A1A;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color:white;
+}
