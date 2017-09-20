@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    height: 100%;
     font-family: 'Raleway';
 }
 
@@ -133,29 +134,57 @@ nav ul li a {
 /* Reach Us  */
 
 #reach-us {
-    min-height: 60vh;
-    background: #E1F5FE;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center
+    min-height: 80vh;
+    background: #FBE2B4;
+    padding: 1rem;
+    flex-direction: row;
 }
 
-.form-container{
-    flex:9;
+.reach-us-form {
     display: flex;
-
+    flex: 1;
+    background: black;
+    box-shadow: 18px 17px 60px -16px #555;
 }
+
+.form-description {
+    flex: 3;
+    padding: 1rem;
+    font-size: 1rem;
+    background: #F3DF49;
+}
+
+.form-container {
+    flex: 7;
+    display: grid;
+    background: #fff;
+    /* padding: 1.2rem;   */
+}
+
+.reach-us-headline {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 0.8rem;
+}
+
+#reach-us-message {}
+
+#reach-us-name {}
+
+#reach-us-email {}
+
+#reach-us-submit {}
 
 
 /* Copyright  */
 
 #copyright {
-    min-height:6vh;
+    min-height: 6vh;
     background: #FC4A1A;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    color:white;
+    color: white;
 }
